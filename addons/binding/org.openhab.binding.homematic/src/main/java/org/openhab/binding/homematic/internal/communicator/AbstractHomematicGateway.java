@@ -531,9 +531,8 @@ public abstract class AbstractHomematicGateway implements RpcEventListener, Home
 
     private void updateRssiInfo(String address, String datapointName, Integer value) {
         HmDatapointInfo dpInfo = new HmDatapointInfo(address, HmParamsetType.VALUES, 0, datapointName);
-        HmChannel channel;
         try {
-            channel = getDevice(dpInfo.getAddress()).getChannel(0);
+            HmChannel channel = getDevice(dpInfo.getAddress()).getChannel(0);
             if (channel != null) {
                 eventReceived(dpInfo, value);
             }
